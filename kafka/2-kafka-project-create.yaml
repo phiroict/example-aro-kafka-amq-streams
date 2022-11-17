@@ -1,0 +1,59 @@
+kind: Project
+apiVersion: project.openshift.io/v1
+metadata:
+  name: kafka-ns
+  labels:
+    kubernetes.io/metadata.name: kafka-ns
+    pod-security.kubernetes.io/audit: restricted
+    pod-security.kubernetes.io/audit-version: v1.24
+    pod-security.kubernetes.io/warn: restricted
+    pod-security.kubernetes.io/warn-version: v1.24
+  annotations:
+    openshift.io/description: ''
+    openshift.io/display-name: Kafka namespace
+    openshift.io/requester: kubeadmin
+    openshift.io/sa.scc.mcs: 's0:c26,c5'
+    openshift.io/sa.scc.supplemental-groups: 1000660000/10000
+    openshift.io/sa.scc.uid-range: 1000660000/10000
+  managedFields:
+    - manager: Go-http-client
+      operation: Update
+      apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:openshift.io/description': {}
+            'f:openshift.io/display-name': {}
+            'f:openshift.io/requester': {}
+          'f:labels':
+            .: {}
+            'f:kubernetes.io/metadata.name': {}
+    - manager: cluster-policy-controller
+      operation: Update
+      apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:openshift.io/sa.scc.mcs': {}
+            'f:openshift.io/sa.scc.supplemental-groups': {}
+            'f:openshift.io/sa.scc.uid-range': {}
+          'f:labels':
+            'f:pod-security.kubernetes.io/audit': {}
+            'f:pod-security.kubernetes.io/audit-version': {}
+            'f:pod-security.kubernetes.io/warn': {}
+            'f:pod-security.kubernetes.io/warn-version': {}
+    - manager: openshift-controller-manager
+      operation: Update
+      apiVersion: v1
+      time: '2022-11-12T22:06:24Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:finalizers': {}
+      subresource: finalize
+spec:
+  finalizers:
+    - kubernetes

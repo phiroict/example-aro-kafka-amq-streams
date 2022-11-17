@@ -1,0 +1,49 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaTopic
+metadata:
+  generation: 1
+  labels:
+    strimzi.io/cluster: my-cluster
+  managedFields:
+    - apiVersion: kafka.strimzi.io/v1beta2
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:strimzi.io/cluster': {}
+        'f:spec':
+          .: {}
+          'f:config':
+            .: {}
+            'f:retention.ms': {}
+            'f:segment.bytes': {}
+          'f:partitions': {}
+          'f:replicas': {}
+          'f:topicName': {}
+      manager: Mozilla
+      operation: Update
+      time: '2022-11-12T22:11:17Z'
+    - apiVersion: kafka.strimzi.io/v1beta2
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          .: {}
+          'f:conditions': {}
+          'f:observedGeneration': {}
+          'f:topicName': {}
+      manager: strimzi-topic-operator
+      operation: Update
+      subresource: status
+      time: '2022-11-12T22:11:18Z'
+  name: my-topic
+  namespace: kafka-ns
+  resourceVersion: '43638'
+  uid: 005ad9e2-6b92-4b85-8491-ca54ea1908be
+spec:
+  config:
+    retention.ms: 604800000
+    segment.bytes: 1073741824
+  partitions: 10
+  replicas: 3
+  topicName: kafka-demo-topic
