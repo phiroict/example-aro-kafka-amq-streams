@@ -17,3 +17,6 @@ deploy_producer:
     --rm=true \
     --restart=Never \
     -- bin/kafka-console-producer.sh --bootstrap-server my-cluster-kafka-tls-bootstrap-kafka-ns.apps-crc.testing  --topic my-topic
+test_start_local_cluster:
+	cd tests/local && docker-compose -f kafka-cluster-docker-compose.yaml up -d
+	docker exec broker kafka-topics --bootstrap-server broker:9092 --create --topic my-topic
